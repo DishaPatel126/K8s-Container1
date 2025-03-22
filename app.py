@@ -49,6 +49,10 @@ def calculate():
         
         file_name = data["file"]
         product = data["product"]
+
+        if not isinstance(file_name, str) or not isinstance(product, str):
+            return jsonify({"file": None, "error": "Invalid JSON input."}), 400
+            
         file_path = os.path.join(PERSISTENT_STORAGE_PATH, file_name)
         
         if not os.path.isfile(file_path):

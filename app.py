@@ -5,11 +5,10 @@ import requests
 
 app = Flask(__name__)
 
-# Persistent volume directory in GKE
+
 PERSISTENT_STORAGE_PATH = "/disha_PV_dir/"
 CONTAINER_2_URL = "http://container2:5000/process"
 
-# Ensure the persistent storage directory exists
 os.makedirs(PERSISTENT_STORAGE_PATH, exist_ok=True)
 
 @app.route('/store-file', methods=['POST'])
@@ -52,7 +51,7 @@ def calculate():
 
         if not isinstance(file_name, str) or not isinstance(product, str):
             return jsonify({"file": None, "error": "Invalid JSON input."}), 400
-            
+
         file_path = os.path.join(PERSISTENT_STORAGE_PATH, file_name)
         
         if not os.path.isfile(file_path):

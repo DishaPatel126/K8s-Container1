@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 
-#CI/CD trigger for container1
+
 PERSISTENT_STORAGE_PATH = "/disha_PV_dir/"
 CONTAINER_2_URL = "http://container2:5000/process"
 
